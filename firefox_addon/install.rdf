@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>jsmruby@masamitsu.murase.jp</em:id>
+    <em:version>0.0.1</em:version>
+    <em:type>2</em:type> <!-- Extensions -->
+    <em:unpack>true</em:unpack>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> <!-- firefox -->
+        <em:minVersion>3.0</em:minVersion>
+        <em:maxVersion>17.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+	<em:name>JsMruby</em:name>
+
+	<em:localized>
+	  <Description>
+		<em:locale>en-US</em:locale>
+		<em:name>JsMruby</em:name>
+		<em:creator>Masamitsu MURASE</em:creator>
+		<em:description>Extension to run mruby script</em:description>
+	  </Description>
+	</em:localized>
+
+    <em:homepageURL>https://github.com/masamitsu-murase/JsMruby</em:homepageURL>
+    <em:iconURL>chrome://jsmruby/skin/icon128.png</em:iconURL>
+<!--	<em:targetPlatform>WINNT</em:targetPlatform> -->
+  </Description>
+</RDF>
