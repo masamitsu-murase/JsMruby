@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JsMruby Sample</title>
+</head>
+<body id="bodyId">
+
+<object id="jsmruby" type="application/x-jsmruby-plugin" width="1" height="1" style="position: absolute;"></object>
+
+<h1>Sample of JsMruby</h1>
+
+<script id="mruby_script" type="text/ruby">
+#<![CDATA[
+
+class Complex
+  attr_reader :cr, :ci
+
+  def initialize(cr, ci)
+    @cr = cr
+    @ci = ci
+  end
+
+  def +(other)
+    return Complex.new(@cr + other.cr, @ci + other.ci)
+  end
+
+  def *(other)
+    return Complex.new(@cr * other.cr - @ci * other.ci, @cr * other.ci + @ci * other.cr)
+  end
+
+  def norm
+    return @cr ** 2 + @ci ** 2
+  end
+end
+
+class Canvas
+  attr_accessor :color
+
+  def initialize(id)
+    doc = JsObj.get("document")
+    @canvas = doc.getElementById(id)
+    @color = "rgb(0, 0, 0)"
+  end
+
+  def draw_rect(x, y, size)
+    ctx = @canvas.getContext("2d")
+
+    ctx.beginPath
+    ctx.fillStyle = @color
+    ctx.fillRect(x, y, size, size)
+  end
+end
+
+def mandelbrot(cr, ci)
+  limit = 64
+  iterations = 0
+  c = Complex.new(cr, ci)
+  z = Complex.new(0, 0)
+  while iterations<limit and z.norm<100
+    z = z * z + c
+    iterations += 1
+  end
+  return iterations
+end
+
+def mandel_calc(min_r, min_i, max_r, max_i, res)
+  canvas = Canvas.new("canvas_id")
+  ratio = 40
+
+  cur_i = min_i
+  while cur_i < max_i
+    cur_r = min_r
+    while cur_r < max_r
+      color = 256 - mandelbrot(cur_r, cur_i) * 3
+      canvas.color = "rgb(#{color},#{color},#{color})"
+      canvas.draw_rect((cur_r - min_r) * ratio, (cur_i - min_i) * ratio, res*ratio)
+      cur_r += res
+    end
+    cur_i += res
+  end
+end
+
+def main
+  start_time = Time.now
+  mandel_calc(-1.5, -1, 0.5, 1, 0.05)
+  end_time = Time.now
+
+  popup_func = JsObj.get("popup")
+  popup_func.call(start_time.to_i, end_time.to_i)
+end
+
+# ]]>
+</script>
+
+<script type="text/javascript">
+  var jsmruby = document.getElementById("jsmruby");
+  var text = document.getElementById("mruby_script").firstChild.nodeValue;
+  jsmruby.load(text);
+
+  function popup(start_time, end_time)
+  {
+      alert("Elapsed Time: " + (end_time - start_time) + "s");
+  }
+</script>
+
+<h2>Mandelbrot</h2>
+<div>
+  <canvas id="canvas_id" height="80" width="80" style="border: 1px solid black;"></canvas>
+</div>
+
+<form>
+  <input type=button value="Draw" onclick='jsmruby.send("main")' />
+</form>
+
+</body>
+</html>
