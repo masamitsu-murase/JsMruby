@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+
+    "name": "JsMruby (mruby NPAPI plugin)",
+    "version": "0.0.1",
+
+    "description": "Extension to run mruby script",
+    "icons": {
+        "32": "icon32.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+
+    "default_locale": "en",
+
+    "browser_action": {
+        "default_icon": "icon32.png",
+        "default_title": "JsMruby (mruby NPAPI plugin)"
+    },
+
+    "plugins": [
+        {
+            "path": "npjsmrby.dll",
+            "public": true
+        }
+    ]
+}
