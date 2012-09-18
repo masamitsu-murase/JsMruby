@@ -1,6 +1,6 @@
 TARGET = libjsmruby.so
 OBJS = $(patsubst %.cpp,%.o,$(wildcard *.cpp))
-AR = AR
+AR = ar
 CXX = g++
 INC_DIRS = $(INCDIRS) ../include ../sdk
 CXXFLAGS = $(patsubst %,-I%,$(INC_DIRS))
