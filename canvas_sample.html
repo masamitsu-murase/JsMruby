@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JsMruby Canvas Sample</title>
+  <script src="http://alexgorbatchev.com/pub/sh/2.1.382/scripts/shCore.js" type="text/javascript"></script>
+  <script src="http://alexgorbatchev.com/pub/sh/2.1.382/scripts/shBrushJScript.js" type="text/javascript"></script>
+  <script src="http://alexgorbatchev.com/pub/sh/2.1.382/scripts/shBrushRuby.js" type="text/javascript"></script>
+  <link href="http://alexgorbatchev.com/pub/sh/2.1.382/styles/shCore.css" rel="stylesheet" type="text/css" />
+  <link href="http://alexgorbatchev.com/pub/sh/2.1.382/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript">
+    SyntaxHighlighter.all()
+  </script>
+</head>
+<body id="bodyId">
+
+<object id="jsmruby" type="application/x-jsmruby-plugin" width="1" height="1" style="position: absolute;"></object>
+
+<h1>JsMruby Canvas Sample</h1>
+
+<p>
+  Please install <a href="https://github.com/masamitsu-murase/JsMruby/downloads">JsMruby plugin</a>!
+</p>
+
+<div>
+  <canvas id="canvas_id" height="50" width="140" style="border: 1px solid black;"></canvas>
+</div>
+
+<form>
+  <input type="button" id="draw_button" value="Draw" />
+</form>
+
+<script id="mruby_script" type="text/ruby">
+#<![CDATA[
+
+class Canvas
+  attr_accessor :color, :font_name, :font_size
+
+  def initialize(id)
+    doc = JsObj.get("document")
+    @canvas = doc.getElementById(id)
+    @color = "rgb(0, 0, 0)"
+    @font_size = "12px"
+    @font_name = "Monospace"
+  end
+
+  def draw_rect(x, y, width, height)
+    ctx = @canvas.getContext("2d")
+
+    ctx.beginPath
+    ctx.fillStyle = @color
+    ctx.fillRect(x, y, width, height)
+  end
+
+  def draw_text(text, x, y, option = {})
+    opt = { :text_align => :left, :text_baseline => :bottom }.merge(option)
+
+    ctx = @canvas.getContext("2d")
+
+    ctx.textAlign = opt[:text_align].to_s
+    ctx.textBaseline = opt[:text_baseline].to_s
+    ctx.fillStyle = @color
+    ctx.font = "#{@font_size} '#{@font_name}'"
+    ctx.fillText(text, x, y)
+  end
+end
+
+def main
+  canvas = Canvas.new("canvas_id")
+
+  canvas.font_size = "30px"
+  canvas.font_name = "Serif"
+
+  bg_color = "rgb(255, 223, 223)"
+  fg_color = "rgb(48, 0, 0)"
+
+  canvas.color = bg_color
+  canvas.draw_rect(0, 0, 50, 35)
+  canvas.color = fg_color
+  canvas.draw_text("Js", 50, 35, :text_align => :right)
+
+  canvas.color = bg_color
+  canvas.draw_rect(50, 15, 90, 35)
+  canvas.color = fg_color
+  canvas.draw_text("Mruby", 50, 15, :text_baseline => :top)
+end
+
+# ]]>
+</script>
+
+<script type="text/javascript">
+  var jsmruby = document.getElementById("jsmruby");
+  var text = document.getElementById("mruby_script").firstChild.nodeValue;
+
+  // Load mruby script.
+  jsmruby.load(text);
+
+  document.addEventListener("click", function(e){
+      // Call 'main' method of mruby script.
+      jsmruby.send("main");
+  });
+</script>
+
+<h2>Source Code</h2>
+<h3>Mruby part</h3>
+<script type="syntaxhighlighter" class="brush: ruby"><![CDATA[
+
+class Canvas
+  attr_accessor :color, :font_name, :font_size
+
+  def initialize(id)
+    doc = JsObj.get("document")
+    @canvas = doc.getElementById(id)
+    @color = "rgb(0, 0, 0)"
+    @font_size = "12px"
+    @font_name = "Monospace"
+  end
+
+  def draw_rect(x, y, width, height)
+    ctx = @canvas.getContext("2d")
+
+    ctx.beginPath
+    ctx.fillStyle = @color
+    ctx.fillRect(x, y, width, height)
+  end
+
+  def draw_text(text, x, y, option = {})
+    opt = { :text_align => :left, :text_baseline => :bottom }.merge(option)
+
+    ctx = @canvas.getContext("2d")
+
+    ctx.textAlign = opt[:text_align].to_s
+    ctx.textBaseline = opt[:text_baseline].to_s
+    ctx.fillStyle = @color
+    ctx.font = "#{@font_size} '#{@font_name}'"
+    ctx.fillText(text, x, y)
+  end
+end
+
+def main
+  canvas = Canvas.new("canvas_id")
+
+  canvas.font_size = "30px"
+  canvas.font_name = "Serif"
+
+  bg_color = "rgb(255, 223, 223)"
+  fg_color = "rgb(48, 0, 0)"
+
+  canvas.color = bg_color
+  canvas.draw_rect(0, 0, 50, 35)
+  canvas.color = fg_color
+  canvas.draw_text("Js", 50, 35, :text_align => :right)
+
+  canvas.color = bg_color
+  canvas.draw_rect(50, 15, 90, 35)
+  canvas.color = fg_color
+  canvas.draw_text("Mruby", 50, 15, :text_baseline => :top)
+end
+
+]]></script>
+
+<h3>JavaScript part</h3>
+<script type="syntaxhighlighter" class="brush: js"><![CDATA[
+  var jsmruby = document.getElementById("jsmruby");
+  var text = document.getElementById("mruby_script").firstChild.nodeValue;
+
+  // Load mruby script.
+  jsmruby.load(text);
+
+  document.addEventListener("click", function(e){
+      // Call 'main' method of mruby script.
+      jsmruby.send("main");
+  });
+]]></script>
+
+</body>
+</html>
