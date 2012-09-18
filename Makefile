@@ -14,7 +14,7 @@ CRX_NAME = JsMruby
 CRX = $(CRX_NAME)_$(PACK_SUFFIX)
 
 VERS = VERSION_MAJOR VERSION_MINOR VERSION_TEENY
-VARS = $(foreach var, $(VERS) PLUGIN_NAME, $(var)=$($(var)))
+VARS = $(foreach var, $(VERS) PLUGIN_NAME PACK_SUFFIX, $(var)=$($(var)))
 
 .PHONY: all clean npapi xpi crx
 
