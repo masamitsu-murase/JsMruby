@@ -1,6 +1,13 @@
+PLUGIN_NAME = libjsmruby-plugin.so
+PLUGIN_SRC = ../npapi/src/$(PLUGIN_NAME)
+PLUGIN = plugins/$(PLUGIN_NAME)
+
 .PHONY: all
 
 all: ../jsmruby.xpi
 
-../jsmruby.xpi:
-	zip -r $@ ./ -x *.dll
+$(PLUGIN): $(PLUGIN_SRC)
+	cp $< $@
+
+../jsmruby.xpi: $(PLUGIN) $(filter-out %.dll Makefile %~, $(wildcard *))
+	zip -r $@ ./ -x *.dll Makefile *~
