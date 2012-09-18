@@ -175,6 +175,9 @@ NPError	NPP_GetValue(NPP instance, NPPVariable variable, void *value)
       case NPPVpluginScriptableNPObject:
         *(static_cast< NPObject** >(value)) = pPlugin->GetScriptableObject();
         break;
+      case NPPVpluginNeedsXEmbed:
+        *(int*)value = 1;
+        break;
       default:
         return NPERR_GENERIC_ERROR;
     }
