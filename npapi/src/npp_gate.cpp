@@ -46,7 +46,7 @@
 char*
 NPP_GetMIMEDescription(void)
 {
-  return "";
+  return "application/x-jsmruby-plugin:.rb:JsMruby Plugin";
 }
 
 
