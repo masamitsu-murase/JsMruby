@@ -3,7 +3,7 @@ OBJS = $(patsubst %.cpp,%.o,$(wildcard *.cpp))
 CXX = g++
 LDSHARED = $(CXX) -shared
 INC_DIRS = $(INCDIRS) ../include ../sdk
-CXXFLAGS = $(patsubst %,-I%,$(INC_DIRS))
+CXXFLAGS = $(patsubst %,-I%,$(INC_DIRS)) -DXP_UNIX
 
 all: $(TARGET)
 $(TARGET): $(OBJS)
