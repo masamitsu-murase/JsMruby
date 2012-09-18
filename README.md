@@ -1,9 +1,11 @@
 
-# mruby NPAPI plugin for Firefox and Chrome
+# JsMruby - mruby NPAPI plugin for Firefox and Chrome
 
 ## Sample
 
 First of all, I show sample code.
+
+Install [JsMruby plugin](https://github.com/masamitsu-murase/JsMruby/downloads) and see [demonstration](http://masamitsu-murase.github.com/JsMruby/canvas_sample.html).
 
 ```html
 <!DOCTYPE html>
