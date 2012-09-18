@@ -1,4 +1,4 @@
-TARGET = libjsmruby.so
+TARGET = libjsmruby-plugin.so
 OBJS = $(patsubst %.cpp,%.o,$(wildcard *.cpp))
 CXX = g++
 LDSHARED = $(CXX) -shared
