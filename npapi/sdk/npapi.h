@@ -57,6 +57,17 @@
 # endif /* XP_WIN */
 #endif /* _WINDOWS */
 
+#if defined(__APPLE_CC__) && !defined(XP_UNIX)
+#ifndef XP_MACOSX
+#define XP_MACOSX 1
+#endif
+#endif
+
+#if !defined(XP_OS2) && !defined(XP_WIN) && !defined(XP_SYMBIAN) && !defined(XP_MACOSX) && !defined(XP_MAC)
+/* TODO: stricter check */
+#define XP_UNIX 1
+#endif
+
 #ifdef XP_MACOSX
 #ifdef __LP64__
 #define NP_NO_QUICKDRAW

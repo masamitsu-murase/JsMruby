@@ -4,7 +4,7 @@ CXX = g++
 LDSHARED = $(CXX) -shared
 LIBMRUBY = -lmruby
 INC_DIRS = $(INCDIRS) ../include ../sdk
-CXXFLAGS = $(patsubst %,-I%,$(INC_DIRS)) -DXP_UNIX
+CXXFLAGS = $(patsubst %,-I%,$(INC_DIRS))
 
 .PHONY: all
 
