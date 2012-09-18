@@ -6,9 +6,12 @@ XPI_NAME = jsmruby_$(XPI_VERSION).xpi
 XPI_DIR = ..
 XPI = $(XPI_DIR)/$(XPI_NAME)
 
-.PHONY: all
+.PHONY: all clean
 
 all: $(XPI)
+
+clean:
+	rm -f $(PLUGIN) $(XPI)
 
 $(PLUGIN): $(PLUGIN_SRC)
 	cp $< $@
