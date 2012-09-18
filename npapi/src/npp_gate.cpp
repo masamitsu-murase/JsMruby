@@ -40,6 +40,7 @@
 // Implementation of plugin entry points (NPP_*)
 // most are just empty stubs for this particular plugin 
 //
+#include <cstdlib>
 #include "plugin.h"
 
 char*

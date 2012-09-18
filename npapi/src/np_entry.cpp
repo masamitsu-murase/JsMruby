@@ -41,6 +41,8 @@
 //
 #ifdef _WINDOWS
 #include <windows.h>
+#else
+#include <cstdlib>
 #endif
 
 #include "npapi.h"
