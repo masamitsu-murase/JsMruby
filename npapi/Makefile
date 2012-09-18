@@ -1,3 +1,3 @@
-.PHONY: src
+.PHONY: all
 all:
 	$(MAKE) -C src

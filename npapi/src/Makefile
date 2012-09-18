@@ -6,7 +6,10 @@ LIBMRUBY = -lmruby
 INC_DIRS = $(INCDIRS) ../include ../sdk
 CXXFLAGS = $(patsubst %,-I%,$(INC_DIRS)) -DXP_UNIX
 
+.PHONY: all
+
 all: $(TARGET)
+
 $(TARGET): $(OBJS)
 	$(LDSHARED) $(OBJS) $(LIBMRUBY) -o $@
 
