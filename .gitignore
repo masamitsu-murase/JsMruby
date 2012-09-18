@@ -4,6 +4,7 @@
 
 # Visual Studio files
 *.[Oo]bj
+*.o
 *.user
 *.aps
 *.pch
@@ -23,6 +24,7 @@
 *.sdf
 *.opensdf
 *.unsuccessfulbuild
+*~
 ipch/
 obj/
 [Bb]in

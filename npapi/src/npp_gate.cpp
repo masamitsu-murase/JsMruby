@@ -40,12 +40,13 @@
 // Implementation of plugin entry points (NPP_*)
 // most are just empty stubs for this particular plugin 
 //
+#include <cstdlib>
 #include "plugin.h"
 
 char*
 NPP_GetMIMEDescription(void)
 {
-  return "";
+  return "application/x-jsmruby-plugin:.rb:JsMruby Plugin";
 }
 
 
@@ -173,6 +174,9 @@ NPError	NPP_GetValue(NPP instance, NPPVariable variable, void *value)
         break;
       case NPPVpluginScriptableNPObject:
         *(static_cast< NPObject** >(value)) = pPlugin->GetScriptableObject();
+        break;
+      case NPPVpluginNeedsXEmbed:
+        *(int*)value = 1;
         break;
       default:
         return NPERR_GENERIC_ERROR;
