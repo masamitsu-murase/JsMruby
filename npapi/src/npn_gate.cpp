@@ -43,6 +43,8 @@
 #include <windows.h>
 #endif
 
+#include <cstdlib>
+
 #include "npapi.h"
 #include "npfunctions.h"
 

@@ -60,6 +60,7 @@
 #ifdef XP_MACOSX
 #ifdef __LP64__
 #define NP_NO_QUICKDRAW
+#include <Carbon/Carbon.h>
 #else
 #include <Carbon/Carbon.h>
 #endif

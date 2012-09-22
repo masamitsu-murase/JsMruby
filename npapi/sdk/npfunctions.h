@@ -224,7 +224,7 @@ typedef OSErr (*BP_GetSupportedMIMETypesProcPtr)(BPSupportedMIMETypes*, UInt32);
 #endif
 #endif
 
-#if defined(XP_UNIX)
+//#if defined(XP_UNIX)
 /* GCC 3.3 and later support the visibility attribute. */
 #if defined(__GNUC__) && ((__GNUC__ >= 4) || (__GNUC__ == 3 && __GNUC_MINOR__ >= 3))
 #define NP_VISIBILITY_DEFAULT __attribute__((visibility("default")))
@@ -234,7 +234,7 @@ typedef OSErr (*BP_GetSupportedMIMETypesProcPtr)(BPSupportedMIMETypes*, UInt32);
 #define NP_VISIBILITY_DEFAULT
 #endif
 #define NP_EXPORT(__type) NP_VISIBILITY_DEFAULT __type
-#endif
+//#endif
 
 #if defined(_WINDOWS) || defined (__OS2__)
 #ifdef __cplusplus
@@ -266,7 +266,7 @@ char*          NP_GetMIMEDescription();
 #pragma pack()
 #endif
 
-#ifdef XP_UNIX
+//#ifdef XP_UNIX
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -283,6 +283,6 @@ NP_EXPORT(NPError) NP_GetValue(void *future, NPPVariable aVariable, void *aValue
 #ifdef __cplusplus
 }
 #endif
-#endif
+//#endif
 
 #endif /* npfunctions_h_ */

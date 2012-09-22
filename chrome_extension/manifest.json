@@ -20,7 +20,7 @@
 
     "plugins": [
         {
-            "path": "npjsmrby.dll",
+            "path": "npjsmrby.bundle",
             "public": true
         }
     ]
