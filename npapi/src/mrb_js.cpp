@@ -46,7 +46,8 @@ static mrb_value mrb_js_func_call(mrb_state *mrb, mrb_value self)
     int len;
     mrb_get_args(mrb, "*", &values, &len);
 
-    NPVariant empty = { NPVariantType_Void, NULL };
+    NPVariant empty;
+    NULL_TO_NPVARIANT(empty);
     std::vector< NPVariant > args(len + 1, empty);
     bool success = true;
     for (int i=0; i<len; i++){

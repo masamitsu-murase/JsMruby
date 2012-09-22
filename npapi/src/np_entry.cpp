@@ -43,6 +43,8 @@
 #include <windows.h>
 #endif
 
+#include <cstdlib>
+
 #include "npapi.h"
 #include "npfunctions.h"
 
@@ -51,8 +53,6 @@
 #endif
 
 NPNetscapeFuncs NPNFuncs;
-
-#ifdef XP_WIN
 
 NPError OSCALL NP_GetEntryPoints(NPPluginFuncs* pFuncs)
 {
@@ -82,8 +82,6 @@ NPError OSCALL NP_GetEntryPoints(NPPluginFuncs* pFuncs)
 
     return NPERR_NO_ERROR;
 }
-
-#endif /* XP_WIN */
 
 char *NPP_GetMIMEDescription();
 

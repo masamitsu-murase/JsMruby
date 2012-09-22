@@ -246,7 +246,7 @@ typedef OSErr (*BP_GetSupportedMIMETypesProcPtr)(BPSupportedMIMETypes*, UInt32);
 #endif
 #endif
 
-#if defined(XP_UNIX)
+#if defined(XP_UNIX) || defined(XP_MACOSX)
 /* GCC 3.3 and later support the visibility attribute. */
 #if defined(__GNUC__) && ((__GNUC__ >= 4) || (__GNUC__ == 3 && __GNUC_MINOR__ >= 3))
 #define NP_VISIBILITY_DEFAULT __attribute__((visibility("default")))
@@ -293,7 +293,7 @@ char*           NP_GetMIMEDescription(void);
 #pragma pack()
 #endif
 
-#ifdef XP_UNIX
+#if defined(XP_UNIX) || defined(XP_MACOSX)
 #ifdef __cplusplus
 extern "C" {
 #endif

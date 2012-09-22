@@ -22,6 +22,10 @@
         {
             "path": "npjsmrby.dll",
             "public": true
+        },
+        {
+            "path": "npjsmrby.bundle",
+            "public": true
         }
     ]
 }
