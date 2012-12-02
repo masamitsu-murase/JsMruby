@@ -95,7 +95,7 @@ end
   // Load mruby script.
   jsmruby.load(text);
 
-  document.addEventListener("click", function(e){
+  document.getElementById("draw_button").addEventListener("click", function(e){
       // Call 'main' method of mruby script.
       jsmruby.send("main");
   });
