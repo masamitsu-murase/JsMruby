@@ -784,10 +784,8 @@ extern "C" {
 
 /* NPP_* functions are provided by the plugin and called by the navigator. */
 
-#if defined(XP_UNIX) || defined(XP_MACOSX)
 const char* NPP_GetMIMEDescription(void);
 NPError NPP_Initialize(void);
-#endif
 
 NPError NP_LOADDS NPP_New(NPMIMEType pluginType, NPP instance,
                           uint16_t mode, int16_t argc, char* argn[],
