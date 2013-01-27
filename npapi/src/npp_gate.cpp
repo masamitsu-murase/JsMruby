@@ -80,6 +80,23 @@ NPError NPP_New(NPMIMEType pluginType,
     }
 
     instance->pdata = pPlugin;
+
+#if defined(XP_MACOSX) && defined(__i386__)
+    // Default setting of 32bit mac platform is Carbon event and QuickDraw model.
+    // Chrome (32bit) seems to support only Cocoa and Core graphics,
+    // so change event and drawing model.
+    // https://wiki.mozilla.org/NPAPI:Models
+    NPBool supportsCoreGraphics = false;
+    if (NPN_GetValue(instance, NPNVsupportsCoreGraphicsBool, &supportsCoreGraphics) == NPERR_NO_ERROR && supportsCoreGraphics) {
+      NPN_SetValue(instance, NPPVpluginDrawingModel, (void*)NPDrawingModelCoreGraphics);
+    }
+
+    NPBool supportsCocoaEvents = false;
+    if (NPN_GetValue(instance, NPNVsupportsCocoaBool, &supportsCocoaEvents) == NPERR_NO_ERROR && supportsCocoaEvents){
+      NPN_SetValue(instance, NPPVpluginEventModel, (void*)NPEventModelCocoa);
+    }
+#endif
+
     return NPERR_NO_ERROR;
 }
 
