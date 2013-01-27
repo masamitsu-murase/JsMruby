@@ -2,6 +2,8 @@
 [Tt]humbs.db
 *.DS_Store
 
+TAGS
+
 # Visual Studio files
 *.o
 *.[Oo]bj
@@ -29,3 +31,9 @@ obj/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
+
+# Mac
+/npapi/mruby_npapi_mac/npjsmrby
+/npapi/mruby_npapi_mac/npjsmrby.i386
+/npapi/mruby_npapi_mac/npjsmrby.x64
+
