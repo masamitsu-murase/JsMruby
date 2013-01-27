@@ -29,22 +29,22 @@ $(OBJS) : %.o : ../src/%.cpp
 
 .PHONY: clean
 clean:
-	rm -f -r $(OBJS) npjsmrby.bundle $(TARGET_UNIV)
+	rm -f -r $(OBJS) npjsmrby.plugin $(TARGET_UNIV)
 
 
 .PHONY: univ
-univ: $(TARGET_UNIV) npjsmrby_bundle
+univ: $(TARGET_UNIV) npjsmrby_plugin
 
 $(TARGET_UNIV): $(TARGET_I386) $(TARGET_X64)
 	lipo -create $(TARGET_I386) $(TARGET_X64) -output npjsmrby
 
-npjsmrby_bundle: npjsmrby_bundle_dir $(TARGET)
-	cp -f npjsmrby npjsmrby.bundle/Contents/MacOS/
-	cp -f Info.plist npjsmrby.bundle/Contents/
-	cp -f -R English.lproj npjsmrby.bundle/Contents/Resources/
+npjsmrby_plugin: npjsmrby_plugin_dir $(TARGET)
+	cp -f npjsmrby npjsmrby.plugin/Contents/MacOS/
+	cp -f Info.plist npjsmrby.plugin/Contents/
+	cp -f -R English.lproj npjsmrby.plugin/Contents/Resources/
 
-npjsmrby_bundle_dir:
-	mkdir -p npjsmrby.bundle
-	mkdir -p npjsmrby.bundle/Contents/Resources
-	mkdir -p npjsmrby.bundle/Contents/MacOS
+npjsmrby_plugin_dir:
+	mkdir -p npjsmrby.plugin
+	mkdir -p npjsmrby.plugin/Contents/Resources
+	mkdir -p npjsmrby.plugin/Contents/MacOS
 
