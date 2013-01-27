@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JsMruby test</title>
+</head>
+<body>
+  <object id="jsmruby" type="application/x-jsmruby-plugin" style="position: absolute; height: 1px; width: 1px;"></object>
+  <h1>JsMruby test</h1>
+  <p>This page runs mruby's test.</p>
+
+  <form>
+    <input type="button" id="run_button" value="Run Test">
+  </form>
+
+  <div>
+    <textarea id="output" style="display: block; margin-left: 5%; margin-right: 5%; padding: 0px; width: 88%; height: 60em;"></textarea>
+  </div>
+
+  <script type="text/javascript">
+//<![CDATA[
+  var parent = document.getElementById("output");
+  var output = function(msg, result){
+      parent.value = parent.value + result + " : " + msg + "\n";
+  };
+//]]>
+  </script>
+
+  <!-- script should be inserted here. -->
+</body>
+</html>
+
