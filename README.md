@@ -5,7 +5,16 @@
 
 First of all, I show sample code.
 
-Install [JsMruby plugin](https://github.com/masamitsu-murase/JsMruby/downloads) and see [demonstration](http://masamitsu-murase.github.com/JsMruby/canvas_sample.html).
+Install [JsMruby plugin](http://sdrv.ms/WGpMpE) and see [demonstration](http://masamitsu-murase.github.com/JsMruby/canvas_sample.html).  
+If you use Firefox, please use `jsmruby.xpi`. 
+If you use Google Chrome,  please download `jsmruby_chrome.zip` and extract it, then do `load unpackaged extensions`. 
+
+The current version 0.1.0 supports the following platform:
+
+* Firefox and Chrome on Windows.
+* Firefox and Chrome on Mac OS X (Intel).  
+* Firefox on Ubuntu Linux.  
+  I have not checked on Google Chrome on Ubuntu.
 
 ```html
 <!DOCTYPE html>
