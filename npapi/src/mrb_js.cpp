@@ -123,7 +123,7 @@ static mrb_value mrb_js_obj_method_missing(mrb_state *mrb, mrb_value self)
     mrb_value ret = mrb_nil_value();
     if (success){
         int name_len;
-        const char *name_char = mrb_sym2name_len(mrb, SYM2ID(name_sym), &name_len);
+        const char *name_char = mrb_sym2name_len(mrb, mrb_symbol(name_sym), &name_len);
         std::string name(name_char, name_len);
         NPIdentifier name_id = NPN_GetStringIdentifier(name.c_str());
 
