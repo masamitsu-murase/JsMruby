@@ -20,11 +20,15 @@
 
     "plugins": [
         {
+            "path": "npjsmrby.so",
+            "public": true
+        },
+        {
             "path": "npjsmrby.dll",
             "public": true
         },
         {
-            "path": "npjsmrby.bundle",
+            "path": "npjsmrby.plugin",
             "public": true
         }
     ]
