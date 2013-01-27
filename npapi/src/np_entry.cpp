@@ -83,9 +83,7 @@ NPError OSCALL NP_GetEntryPoints(NPPluginFuncs* pFuncs)
     return NPERR_NO_ERROR;
 }
 
-char *NPP_GetMIMEDescription();
-
-char *
+const char *
 NP_GetMIMEDescription()
 {
   return NPP_GetMIMEDescription();

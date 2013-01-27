@@ -282,8 +282,8 @@ typedef NPError (*NP_InitializeFunc)(NPNetscapeFuncs*);
 NPError OSCALL  NP_Initialize(NPNetscapeFuncs* bFuncs);
 typedef NPError (*NP_ShutdownFunc)(void);
 NPError OSCALL  NP_Shutdown(void);
-typedef char*   (*NP_GetMIMEDescriptionFunc)(void);
-char*           NP_GetMIMEDescription(void);
+typedef const char*   (*NP_GetMIMEDescriptionFunc)(void);
+const char*           NP_GetMIMEDescription(void);
 #ifdef __cplusplus
 }
 #endif
@@ -299,8 +299,8 @@ extern "C" {
 #endif
 typedef char*      (*NP_GetPluginVersionFunc)(void);
 NP_EXPORT(char*)   NP_GetPluginVersion(void);
-typedef char*      (*NP_GetMIMEDescriptionFunc)(void);
-NP_EXPORT(char*)   NP_GetMIMEDescription(void);
+typedef const char*      (*NP_GetMIMEDescriptionFunc)(void);
+NP_EXPORT(const char*)   NP_GetMIMEDescription(void);
 #ifdef XP_MACOSX
 typedef NPError    (*NP_InitializeFunc)(NPNetscapeFuncs*);
 NP_EXPORT(NPError) NP_Initialize(NPNetscapeFuncs* bFuncs);

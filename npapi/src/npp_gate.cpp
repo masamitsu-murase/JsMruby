@@ -42,10 +42,10 @@
 //
 #include "plugin.h"
 
-char*
+const char*
 NPP_GetMIMEDescription(void)
 {
-  return "";
+  return "application/x-jsmruby-plugin:mrb:JsMruby Plugin";
 }
 
 
@@ -166,10 +166,10 @@ NPError	NPP_GetValue(NPP instance, NPPVariable variable, void *value)
 
     switch(variable){
       case NPPVpluginNameString:
-        *(static_cast< char** >(value)) = "NPRuntimeTest";
+        *(static_cast< const char** >(value)) = "NPRuntimeTest";
         break;
       case NPPVpluginDescriptionString:
-        *(static_cast< char** >(value)) = "NPRuntime scriptability API test plugin";
+        *(static_cast< const char** >(value)) = "NPRuntime scriptability API test plugin";
         break;
       case NPPVpluginScriptableNPObject:
         *(static_cast< NPObject** >(value)) = pPlugin->GetScriptableObject();
